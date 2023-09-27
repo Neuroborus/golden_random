@@ -1,4 +1,4 @@
-import { BigNumber } from 'bignumber.js';
+import {BigNumber} from 'bignumber.js';
 
 export interface GRProgress {
     ADDEND_A: BigNumber.Value; // current ADDEND_A
@@ -6,7 +6,8 @@ export interface GRProgress {
     ACCURACY: number; // DECIMAL_PLACES
 }
 
-export interface GRConfig extends GRProgress {}
+export interface GRConfig extends GRProgress {
+}
 
 declare class GoldenRandom {
     constructor(config?: Partial<GRConfig>);

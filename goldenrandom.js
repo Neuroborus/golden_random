@@ -1,5 +1,5 @@
 const BigNumber = require("bignumber.js");
-const { BN_MODULO_MOD, defaultConfig } = require ("./config");
+const {BN_MODULO_MOD, defaultConfig} = require("./config");
 
 class GoldenRandom {
     BigNumber;
@@ -9,8 +9,8 @@ class GoldenRandom {
     ACCURACY;
     GOLDEN_RATIO;
 
-    constructor ( config = {} ) {
-        const finalConfig = { ...defaultConfig(), ...config };
+    constructor(config = {}) {
+        const finalConfig = {...defaultConfig(), ...config};
         this.BigNumber = BigNumber.clone({
             DECIMAL_PLACES: finalConfig.ACCURACY,
             MODULO_MODE: BN_MODULO_MOD
