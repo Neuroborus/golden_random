@@ -1,8 +1,8 @@
 import { BigNumber } from 'bignumber.js';
 
 export interface GRProgress {
-    DIVIDEND: BigNumber.Value; // current dividend
-    DIVISOR: BigNumber.Value; // current divisor
+    ADDEND_A: BigNumber.Value; // current ADDEND_A
+    ADDEND_B: BigNumber.Value; // current ADDEND_B
     ACCURACY: number; // DECIMAL_PLACES
 }
 

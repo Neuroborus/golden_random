@@ -1,22 +1,23 @@
+const BigNumber = require("bignumber.js");
 const { BN_MODULO_MOD, defaultConfig } = require ("./config");
 
 class GoldenRandom {
-    BigNumber = require("bignumber.js");
+    BigNumber;
 
-    DIVIDEND;
-    DIVISOR;
+    ADDEND_A;
+    ADDEND_B;
     ACCURACY;
     GOLDEN_RATIO;
 
     constructor ( config = {} ) {
         const finalConfig = { ...defaultConfig(), ...config };
-        this.BigNumber.config({
+        this.BigNumber = BigNumber.clone({
             DECIMAL_PLACES: finalConfig.ACCURACY,
             MODULO_MODE: BN_MODULO_MOD
         });
 
-        this.DIVIDEND = new this.BigNumber(finalConfig.DIVIDEND);
-        this.DIVISOR = new this.BigNumber(finalConfig.DIVISOR);
+        this.ADDEND_A = new this.BigNumber(finalConfig.ADDEND_A);
+        this.ADDEND_B = new this.BigNumber(finalConfig.ADDEND_B);
         this.ACCURACY = finalConfig.ACCURACY;
 
         // Golden Ratio with configured decimals { (1 + sqrt(5)) / 2 }
@@ -26,19 +27,21 @@ class GoldenRandom {
     }
 
     next() {
-        let {DIVIDEND, DIVISOR} = this;
-        const next = DIVIDEND.plus(DIVISOR).dividedBy(this.GOLDEN_RATIO);
-        this.DIVIDEND = DIVISOR;
-        this.DIVISOR = next;
+        /// next() is a function that returns a random number
+        let {ADDEND_A, ADDEND_B} = this;
+        const next = ADDEND_A.plus(ADDEND_B).dividedBy(this.GOLDEN_RATIO);
+        this.ADDEND_A = ADDEND_B;
+        this.ADDEND_B = next;
 
-        const fixed = next.toFixed();
+        const fixed = next.toFixed(this.ACCURACY);
         return fixed.slice(fixed.indexOf('.') + 1);
     }
 
     getProgress() {
+        /// getProgress() is a function that returns the current state of the generator
         return {
-            DIVIDEND: this.DIVIDEND.toFixed(),
-            DIVISOR: this.DIVISOR.toFixed(),
+            ADDEND_A: this.ADDEND_A.toFixed(),
+            ADDEND_B: this.ADDEND_B.toFixed(),
             ACCURACY: this.ACCURACY,
         };
     }
