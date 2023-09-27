@@ -1,5 +1,5 @@
-const BigNumber = require("bignumber.js");
-const {BN_MODULO_MOD, defaultConfig} = require("./config");
+const BigNumber = require('bignumber.js');
+const {BN_MODULO_MOD, defaultConfig} = require('./config');
 
 class GoldenRandom {
     BigNumber;
@@ -28,9 +28,8 @@ class GoldenRandom {
 
     next() {
         /// next() is a function that returns a random number
-        let {ADDEND_A, ADDEND_B} = this;
-        const next = ADDEND_A.plus(ADDEND_B).dividedBy(this.GOLDEN_RATIO);
-        this.ADDEND_A = ADDEND_B;
+        const next = this.ADDEND_A.plus(this.ADDEND_B).dividedBy(this.GOLDEN_RATIO);
+        this.ADDEND_A = this.ADDEND_B;
         this.ADDEND_B = next;
 
         const fixed = next.toFixed(this.ACCURACY);

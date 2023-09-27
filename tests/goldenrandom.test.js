@@ -13,17 +13,18 @@ test('Setup config properly', () => {
 });
 
 test('Unique results prefer', () => {
-    // Unique strongly depend on ACCURACY, so we set it to 5 as low as possible
+    // Unique strongly depend on ACCURACY, so we set it to 10 as low as possible
     const gr = new GoldenRandom({
-        ACCURACY: 5
+        ACCURACY: 10
     });
+    const value = 10000
     const results = [];
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < value; i++) {
         results.push(gr.next());
     }
     // console.log(results);
     const uniqueResults = [...new Set(results)];
-    expect(uniqueResults.length).toBe(100);
+    expect(uniqueResults.length).toBe(value);
 });
 
 test('Unique accuracy', () => {
