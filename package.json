@@ -1,8 +1,8 @@
 {
-  "name": "golden-random",
+  "name": "goldenrandom",
   "version": "0.0.1",
-  "description": "",
-  "main": "goldenrandom.js",
+  "description": "A library for generating random numbers with the golden ratio",
+  "main": "goldenrandom",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
