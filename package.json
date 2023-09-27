@@ -1,0 +1,17 @@
+{
+  "name": "golden-random",
+  "version": "0.0.1",
+  "description": "",
+  "main": "goldenrandom.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "Neuroborus",
+    "email": "mihasso@protonmail.com"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bignumber.js": "^9.1.2"
+  }
+}
