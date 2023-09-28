@@ -76,3 +76,28 @@ test('Calculate properly', () => {
     expect(result).toBe('854');
 
 });
+
+test('Types return logic', () => {
+    expect(
+        () => {
+            new GoldenRandom({
+                RETURN_TYPE: 'wrong_type'
+            })
+        }
+    ).toThrowError();
+
+    const grString = new GoldenRandom({
+        RETURN_TYPE: 'string'
+    });
+    const grNumber = new GoldenRandom({
+        RETURN_TYPE: 'number'
+    });
+    const grBigNumber = new GoldenRandom({
+        RETURN_TYPE: 'BigNumber'
+    });
+
+    expect(typeof grString.next()).toBe('string');
+    expect(typeof grNumber.next()).toBe('number');
+    expect(typeof grBigNumber.next()).toBe('object');
+
+});
