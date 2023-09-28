@@ -13,7 +13,7 @@ export interface GRConfig extends GRProgress {
 declare class GoldenRandom {
     constructor(config?: Partial<GRConfig>);
 
-    next<T = BigNumber.Value>(): T;
+    next(): BigNumber.Value;
 
     getProgress(): GRProgress;
 }
