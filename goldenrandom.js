@@ -55,7 +55,7 @@ class GoldenRandom {
                 return new BigNumber(str);
 
             default:
-                throw new Error(`Invalid RETURN_TYPE: ${this.RETURN_TYPE}`);
+                throw new Error(`Invalid RETURN_TYPE: ${this.#RETURN_TYPE}`);
         }
 
     }
