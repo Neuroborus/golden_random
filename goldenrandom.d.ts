@@ -7,12 +7,13 @@ export interface GRProgress {
 }
 
 export interface GRConfig extends GRProgress {
+    RETURN_TYPE: 'string' | 'number' | 'BigNumber';
 }
 
 declare class GoldenRandom {
     constructor(config?: Partial<GRConfig>);
 
-    next(): string;
+    next<T = BigNumber.Value>(): T;
 
     getProgress(): GRProgress;
 }
